@@ -8,16 +8,36 @@
 </head>
 <body>
 
+<!-- ===== MENU ===== -->
+<nav class="menu">
+    <button class="menu-toggle">☰</button>
+    <div class="menu-items">
+        <a href="#">Hlavní</a>
+        <a href="#about">O hře</a>
+        <a href="#gallery">Galerie</a>
+        <a href="#download">Stáhnout</a>
+    </div>
+</nav>
+
+<!-- ===== HEADER ===== -->
 <header class="fade-in">
     <h1>Escape from Epstein Island</h1>
     <p>Atmosférická stealth adventura o útěku z tajemného ostrova</p>
-    <a href="#about" class="btn">Zjistit více</a>
+    <button class="btn" id="infoBtn">Zjistit více</button>
+    <div class="more-text" id="infoText">
+        <p>
+            Hra klade důraz na atmosféru, napětí a pomalé odhalování příběhu.
+            Každé místo na ostrově skrývá nové informace a možné cesty k útěku.
+        </p>
+    </div>
 </header>
 
+<!-- ===== HERO IMAGE ===== -->
 <section class="hero fade-in delay">
-    <div class="image-placeholder">HLAVNÍ OBRÁZEK HRY</div>
+   <img src="nazvanie.png" alt="Hlavní obrázek hry">
 </section>
 
+<!-- ===== ABOUT ===== -->
 <section id="about" class="card fade-in">
     <h2>O hře</h2>
     <p>
@@ -38,18 +58,32 @@
     </ul>
 </section>
 
-<section class="gallery fade-in">
+<!-- ===== GALLERY ===== -->
+<section id="gallery" class="gallery fade-in">
     <h2>Galerie</h2>
     <div class="grid">
-        <div class="image-placeholder">SCREENSHOT</div>
-        <div class="image-placeholder">SCREENSHOT</div>
-        <div class="image-placeholder">SCREENSHOT</div>
+        <img src="AK-47_sunset.png" alt="Screenshot 1" class="clickable">
+        <img src="ostrov.png" alt="Screenshot 2" class="clickable">
+        <img src="hz.webp" alt="Screenshot 3" class="clickable">
     </div>
 </section>
 
+<!-- ===== DOWNLOAD ===== -->
+<section id="download" class="card fade-in">
+    <h2>Stáhnout</h2>
+    <p>není nedostupné</p>
+</section>
+
+<!-- ===== FOOTER ===== -->
 <footer class="fade-in">
     <p>© 2026 Escape from Epstein Island – Fan projekt</p>
 </footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div id="lightbox">
+    <span id="close">&times;</span>
+    <img id="lightbox-img" src="">
+</div>
 
 <script src="script.js"></script>
 </body>

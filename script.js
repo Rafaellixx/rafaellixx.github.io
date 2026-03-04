@@ -1,23 +1,53 @@
-// Fade-in animace při scrollu
-const elements = document.querySelectorAll(".fade-in");
+document.addEventListener("DOMContentLoaded", () => {
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-        }
+    /* ===== FADE-IN ANIMACE ===== */
+    const elements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
     });
-});
+    elements.forEach(el => observer.observe(el));
 
-elements.forEach(el => observer.observe(el));
-
-
-// Glow efekt při kliknutí na obrázek
-document.querySelectorAll(".image-placeholder").forEach(box => {
-    box.addEventListener("click", () => {
-        box.style.boxShadow = "0 0 60px rgba(0,255,255,0.9)";
-        setTimeout(() => {
-            box.style.boxShadow = "0 0 40px rgba(255,255,255,0.2)";
-        }, 400);
+    /* ===== GLOW EFEKT ===== */
+    document.querySelectorAll(".grid img").forEach(img => {
+        img.addEventListener("click", () => {
+            img.classList.add("flash");
+            setTimeout(() => img.classList.remove("flash"), 400);
+        });
     });
+
+    /* ===== MENU ===== */
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".menu-items");
+    if(toggle && menu){
+        toggle.addEventListener("click", () => menu.classList.toggle("open"));
+    }
+
+    /* ===== TLAČÍTKO INFO ===== */
+    const infoBtn = document.getElementById("infoBtn");
+    const infoText = document.getElementById("infoText");
+    if(infoBtn && infoText){
+        infoBtn.addEventListener("click", () => infoText.classList.toggle("show"));
+    }
+
+    /* ===== LIGHTBOX ===== */
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.getElementById("close");
+
+    // Открытие только для галереи
+    document.querySelectorAll(".clickable").forEach(img => {
+        img.addEventListener("click", () => {
+            lightbox.style.display = "flex";
+            lightboxImg.src = img.src;
+        });
+    });
+
+    // Закрытие
+    closeBtn.addEventListener("click", () => lightbox.style.display = "none");
+    lightbox.addEventListener("click", e => {
+        if(e.target === lightbox) lightbox.style.display = "none";
+    });
+
 });
