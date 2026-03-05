@@ -93,7 +93,7 @@ section {
     box-shadow: 0 0 40px rgba(255,255,255,0.2);
 }
 
-/* FOOTER */
+/* autorska prava */
 footer {
     text-align: center;
     padding: 40px;
@@ -168,7 +168,7 @@ footer {
     background: rgba(255,255,255,0.08);
 }
 
-/* ===== СКРЫТЫЙ ТЕКСТ ===== */
+/* ===== skryty text ===== */
 .more-text {
     max-width: 600px;
     margin: 20px auto 0;

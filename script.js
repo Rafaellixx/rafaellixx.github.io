@@ -1,3 +1,5 @@
+// Tento kód čeká, až se načte celá HTML struktura stránky,
+// a teprve potom spustí JavaScript uvnitř této funkce
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ===== FADE-IN ANIMACE ===== */
@@ -36,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lightboxImg = document.getElementById("lightbox-img");
     const closeBtn = document.getElementById("close");
 
-    // Открытие только для галереи
+    // otevirani jen pro galerei
     document.querySelectorAll(".clickable").forEach(img => {
         img.addEventListener("click", () => {
             lightbox.style.display = "flex";
@@ -44,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Закрытие
+    // zavirani
     closeBtn.addEventListener("click", () => lightbox.style.display = "none");
     lightbox.addEventListener("click", e => {
         if(e.target === lightbox) lightbox.style.display = "none";
