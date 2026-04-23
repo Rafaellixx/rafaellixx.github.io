@@ -1,8 +1,6 @@
-// Tento kód čeká, až se načte celá HTML struktura stránky,
-// a teprve potom spustí JavaScript uvnitř této funkce
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ===== FADE-IN ANIMACE ===== */
+    /* FADE */
     const elements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -11,45 +9,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     elements.forEach(el => observer.observe(el));
 
-    /* ===== GLOW EFEKT ===== */
-    document.querySelectorAll(".grid img").forEach(img => {
-        img.addEventListener("click", () => {
-            img.classList.add("flash");
-            setTimeout(() => img.classList.remove("flash"), 400);
-        });
-    });
-
-    /* ===== MENU ===== */
+    /* MENU */
     const toggle = document.querySelector(".menu-toggle");
     const menu = document.querySelector(".menu-items");
-    if(toggle && menu){
-        toggle.addEventListener("click", () => menu.classList.toggle("open"));
-    }
+    toggle.addEventListener("click", () => menu.classList.toggle("open"));
 
-    /* ===== TLAČÍTKO INFO ===== */
-    const infoBtn = document.getElementById("infoBtn");
-    const infoText = document.getElementById("infoText");
-    if(infoBtn && infoText){
-        infoBtn.addEventListener("click", () => infoText.classList.toggle("show"));
-    }
+    /* INFO */
+    const btn = document.getElementById("infoBtn");
+    const text = document.getElementById("infoText");
+    btn.addEventListener("click", () => text.classList.toggle("show"));
 
-    /* ===== LIGHTBOX ===== */
+    /* LIGHTBOX */
     const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const closeBtn = document.getElementById("close");
+    const imgBox = document.getElementById("lightbox-img");
+    const close = document.getElementById("close");
 
-    // otevirani jen pro galerei
     document.querySelectorAll(".clickable").forEach(img => {
         img.addEventListener("click", () => {
-            lightbox.style.display = "flex";
-            lightboxImg.src = img.src;
+            lightbox.classList.add("show");
+            imgBox.src = img.src;
         });
     });
 
-    // zavirani
-    closeBtn.addEventListener("click", () => lightbox.style.display = "none");
+    close.addEventListener("click", () => {
+        lightbox.classList.remove("show");
+    });
+
     lightbox.addEventListener("click", e => {
-        if(e.target === lightbox) lightbox.style.display = "none";
+        if (e.target === lightbox) {
+            lightbox.classList.remove("show");
+        }
+    });
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+            lightbox.classList.remove("show");
+        }
+    });
+
+    /* THEME */
+    const themeBtn = document.querySelector(".theme-toggle");
+    const icon = themeBtn.querySelector(".icon");
+
+    themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("light");
+
+        if (document.body.classList.contains("light")) {
+            icon.textContent = "☀️";
+        } else {
+            icon.textContent = "🌙";
+        }
     });
 
 });
